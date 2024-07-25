@@ -13,6 +13,8 @@ use App\Models\User;
 use App\Models\Applies;
 use App\Http\Controllers\ApplyController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
+use App\Models\Contact;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -87,6 +89,10 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 //Download the resume
 
 Route::get('/download/{file_path}', [DownloadsController::class, 'download'])->where('file_path', '.*')->name('download');
+
+//contact us 
+
+Route::post('/contact/store', [ContactController::class, 'store'])->middleware('auth')->name('contact.store');
 
 
 
